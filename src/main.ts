@@ -13,6 +13,7 @@ import {
   FACEMESH_FACE_OVAL,
   FACEMESH_LIPS,
 } from "@mediapipe/face_mesh";
+import { Face } from "kalidokit";
 import "./style.css";
 
 const width = 400;
@@ -60,6 +61,13 @@ const onResults: ResultsListener = (results) => {
       });
       drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, { color: "#E0E0E0" });
     }
+    // Kolidokitによるパラメータの計算
+    const solveResult = Face.solve(results.multiFaceLandmarks[0], {
+      runtime: "mediapipe",
+      video: videoElement,
+      imageSize: { width: width, height: height },
+    });
+    console.log(solveResult);
   }
   canvasCtx.restore();
 };
