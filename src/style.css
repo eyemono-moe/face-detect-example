@@ -1,0 +1,10 @@
+video,
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+video {
+  filter: blur(15px) grayscale(100%);
+}
